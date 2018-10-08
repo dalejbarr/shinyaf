@@ -1,0 +1,54 @@
+#+TITLE: Shiny Fast Feedback App
+
+* Purpose
+
+This Shiny web app was developed to allow students to provide rapid, anonymous, open-ended feedback to instructors on an ongoing course.
+
+This app requires a shiny server, which you can install for free ([[https://www.rstudio.com/products/shiny/shiny-server/][details here]]).
+
+* How it works
+
+The app can host feedback for multiple courses. You interface to the app by passing 'tokens' in the HTTP request to the server. 
+
+When you run the app for the first time, a secret 'course creation'
+token is defined. Anyone with this token can make a new course.
+
+When you create a course, you receive two URLs, one for students and one for staff. Students follow their URL to submit anonymous feedback. Staff follow theirs to view the feedback.
+
+Staff can receive mobile notifications whenever new feedback has been submitted by associating a simplepush key with the course (visit https://www.simplepush.io/ for further information).  Mobile notifications will be sent with the tag 'feedback' to allow configuration.
+
+** Create a course
+
+When you follow the link to create a course, you will see this:
+
+[[file:course_creation.png]]
+
+Just choose a name to describe your course. You can use any characters
+you want, including spaces. Then enter your simplepush key (if you
+have one, and want to get mobile notifications).
+
+Once you submit this page, you'll get a page with links. Copy the
+links and save them somewhere safe, where you won't lose them.
+
+[[file:course_links.png]]
+
+** What the student sees
+
+When the student clicks the link you provide them, they see this.
+
+[[file:course_student.png]]
+
+** What the instructor sees
+
+When you or another staff member clicks the staff link, you will see a
+list of all the feedback, with the most recent at the top.
+
+[[file:course_staff.png]]
+
+* Installation
+
+Just download this repository and place the =feedback= subfolder with your shiny apps on your server.
+
+The first time you run the app, two unique tokens are created, a *creator* token (for creating new courses) and a *reader* token, for viewing the feedback.  It will print the creator token on the screen. Store this token somewhere safe; you will need it each time you create a new course.
+
+If you lose the creator token, you can only retrieve it from the SQLite database, which is stored in the same directory as the app; it is not possible to get it from the app. The creator token is stored in the table =tokens=.
