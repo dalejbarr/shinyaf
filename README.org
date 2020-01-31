@@ -15,7 +15,7 @@ token is defined. Anyone with this token can make a new course.
 
 When you create a course, you receive two URLs, one for students and one for staff. Students follow their URL to submit anonymous feedback. Staff follow theirs to view the feedback.
 
-Staff can receive mobile notifications whenever new feedback has been submitted by associating a simplepush key with the course (visit https://www.simplepush.io/ for further information).  Mobile notifications will be sent with the tag 'feedback' to allow configuration.
+Staff can receive mobile notifications whenever new feedback has been submitted by associating a Pushover mobile app user key with the course (visit https://pushover.net/ for further information).
 
 ** Create a course
 
